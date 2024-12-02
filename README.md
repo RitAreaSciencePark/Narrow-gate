@@ -1,6 +1,6 @@
 # The Narrow Gate: Localized Image-Text Communication in Vision-Language Models
 
-This repo contains the code for replicating the figures of the CVPR2025 submission id: 17026
+This repo contains the code for replicating the figures of the paper 
 
 ## Setup
 First, install the required packages:
