@@ -1,6 +1,6 @@
 # The Narrow Gate: Localized Image-Text Communication in Vision-Language Models
 
-This repo contains the code for replicating the figures of the paper 
+This repo contains the code for replicating the figures of the paper The Narrow Gate: Localized Image-Text Communication in Vision-Language Models
 
 ## Setup
 First, install the required packages:
