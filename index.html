@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="The Narrow Gate: Localized Image-Text Communication in Vision-Language Models">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>The Narrow Gate: Localized Image-Text Communication in Vision-Language Models</title>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <!-- <link rel="icon" href="./static/images/icon.png"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<!-- More Research -->
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        
+        <!-- <a class="navbar-item" href="https://concept-fusion.github.io">
+        <span class="icon">
+            <i class="fas fa-home"></i>
+        </span>
+        </a> -->
+  
+        <!-- <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            Related Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="Example.com">
+              FExample
+            </a>
+          </div>
+        </div> -->
+      </div>
+  
+    </div>
+  </nav>
+
+<!-- More Research
+<nav class="navbar" role="navigation" aria-label="main navigation">
+  <div class="navbar-brand">
+    <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </a>
+  </div>
+  <div class="navbar-menu">
+    <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+      <a class="navbar-item" href="#">
+      <span class="icon">
+          <i class="fas fa-home"></i>
+      </span>
+      </a>
+      <div class="navbar-item has-dropdown is-hoverable">
+        <a class="navbar-link">
+          More Research
+        </a>
+        <div class="navbar-dropdown">
+          <a class="navbar-item" href="#">
+            Project 1
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>
+-->
+
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <header class="column has-text-centered">
+          <h1 class="title is-1 publication-title">
+            The Narrow Gate
+            <p class="title publication-title">Localized Image-Text Communication in Vision-Language Models</p>
+          </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="">Alessandro Serra</a><sup>1,3</sup>,
+              </span>
+              <span class="author-block">
+                <a href="">Francesco Ortu</a><sup>1,2</sup>,
+              </span>
+            <span class="author-block">
+              <a href="">Emanuele Panizon</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Lucrezia Valeriani</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Lorenzo Basile</a><sup>1,2</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Alessio Ansuini</a><sup>1</sup>,
+            </span>
+            <span class="author-block">
+              <a href="">Diego Doimo</a><sup>1</sup>
+            </span>
+            <span class="author-block">
+              <a href="">Alberto Cazzaniga</a><sup>1</sup>
+            </span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>AREA Science Park, Italy</span>
+            <span class="author-block"><sup>2</sup>University of Trieste, Italy</span>
+            <span class="author-block"><sup>3</sup>SISSA, Italy</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <!-- <span class="link-block">
+                <a href="https://arxiv.org/abs/INSERIRELINK"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Paper</span>
+                </a>
+              </span> -->
+              <span class="link-block">
+                <a href=""
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                  </span>
+                  <span>arXiv</span>
+                </a>
+              </span>
+              <!--
+              <span class="link-block">
+                <a href="https://cvpr.thecvf.com/media/PosterPDFs/CVPR%202024/29694.png?t=1717055323.7435858"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-image"></i>
+                  </span>
+                  <span>Poster</span>
+                </a>
+              </span>
+              -->
+              <!-- Video Link.
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v="
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+              -->
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://github.com/alexserra98/Narrow-gate"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Code</span>
+                  </a>
+              </span>
+
+              <!-- Dataset Link. -->
+              <!-- <span class="link-block">
+                <a href="https://github.com/lorebianchi98/FG-OVD/tree/main/benchmarks"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="far fa-images"></i>
+                  </span>
+                  <span>Data</span>
+                  </a> -->
+              <!-- Video Link. 
+              
+              <span class="link-block">
+                <a href="https://www.youtube.com/watch?v=3AIbqptBhmo"
+                class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-youtube"></i>
+                  </span>
+                  <span>Video</span>
+                </a>
+              </span>
+            -->
+            </div>
+          </div>
+        </header>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Carousel.
+<section class="hero is-light is-small">
+  <div class="hero-body">
+    <div class="container">
+      <div id="results-carousel" class="carousel results-carousel">
+        <div class="item item-1"></div>
+        <div class="item item-2"></div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+<section class="section pt-0">
+  <div class="container is-max-desktop">
+    <figure>
+      <img src="./static/images/cartoon.png" class="teaser-image">
+    </figure>
+    <!-- Abstract.
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full-width">
+        <!-- Teaser. -->
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified">
+          <p>
+            Recent advances in multimodal training have significantly improved the integration of image understanding and generation within a unified model. 
+            This study investigates how vision-language models (VLMs) handle image understanding tasks, specifically focusing on how visual information is processed and transferred to the textual domain. 
+            We compare VLMs that generate both images and text with those that output only text, highlighting key differences in information flow.
+            We find that in models with multimodal outputs, image and text embeddings are more separated within the residual stream.
+            Additionally, models vary in how information is exchanged from visual to textual tokens. VLMs that only output text exhibit a distributed communication pattern, where information is exchanged through multiple image tokens. 
+            In contrast, models trained for image and text generation rely on a single token that acts as a narrow gate for the visual information. 
+            We demonstrate that ablating this single token significantly deteriorates performance on image understanding tasks. Furthermore, modifying this token enables effective steering of the image semantics, showing that targeted, local interventions can reliably control the model's global behavior.          
+          </p>
+          </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+  </div>
+</section>
+
+
+<!-- Predictions. -->
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+
+        <h2 class="title is-3">Modality Gap in VLMs</h2>
+        <figure>
+          <img src="./static/images/figure3.svg" class="teaser-image"><br><br>
+          <caption><b>Left:</b> Cosine similarity between text and image token embeddings as a function of model depth reflects the orthogonality of modalities in Chameleon models.   
+            <b>Right:</b> Homogeneity score of token clusters generated via Advanced Density Peaks with respect to their original modality.</caption>
+        </figure>
+        <br>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+
+        <h2 class="title is-3">Analysis of Cross-Modal Attention</h2>
+        <h2 class="title is-4">Cross-Modal Attention Contributions of Tokens</h2>
+
+        <figure>
+          <img src="./static/images/f6_attention_v3.svg" class="teaser-image"><br><br>
+          <caption>Contribution of different image token positions to the total text-on-image attention across layers
+            in Chameleon-7B (<b>left</b>) and Pixtral-12B (<b>right</b>), computed on ImageNet data. 
+        </figure>
+        <br>
+
+        <h2 class="title is-4">Localization of Visual Semantic Information</h2>
+        <figure>
+          <img src="./static/images/f4_NO.svg" class="teaser-image"><br><br>
+          <caption>Neighborhood overlap between selected image tokens and ImageNet labels for Chameleon-7B (<b>left</b>) and Pixtral-12B (<b>right</b>). 
+        </figure>
+        <br>
+        
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+
+        <h2 class="title is-3">Ablations Experiments</h2>
+        <h2 class="title is-4">Effect of Progressive Attention Knockout</h2>
+        <figure>
+          <img src="./static/images/figure7_v2.svg" class="teaser-image"><br><br>
+          <caption>Neighborhood overlap between model final layer rappresentations at the last text token positions and ImageNet classes when applying attention knockout. 
+            Communication from the [EOI]token position (<b>green</b>) to the text or from all image token positions (<b>magenta</b>) to the text is ablated across an increasing number of layers, starting from the last.
+        </figure>
+        <br>
+
+        <h2 class="title is-4">Effect of Attention Knockout on Image Understanding Tasks</h2>
+        <figure>
+          <!-- <img src="./static/images/.pdf" class="teaser-image"><br><br> -->
+          <caption>Performance of Chameleon (7B and 34B) and Pixtral models on visual question answering (VQAv2), image captioning (Flickr-30k and MS-COCO), and image classification (ImageNet) under different attention ablation settings. 
+            The [EOI] ablation condition removes communication from the End of Image ([EOI]) token to text tokens.
+        </figure>
+        <br>
+
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section" id="results">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width has-text-centered">
+
+        <h2 class="title is-3">Steering Image Understanding Through Activation Patching</h2>
+        <figure>
+          <img src="./static/images/figure8.svg" class="teaser-image"><br><br>
+          <caption>Similarity between the probability distributions over the vocabulary for the target input and the base input across different layers. 
+            (<b>left</b>) Impact of patching the residual stream at each layer.  (<b>right</b>) Impact of cumulative patching of the sole input of attention blocks, starting from the point indicated on the x-axis through the end of the model.
+        </figure>
+        <br>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Results -->
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Research questions</h2>
+        <div class="content has-text-justified">
+          </div>
+      </div>
+    </div>
+  </div>
+</section> -->
+<!-- Concurrent Work.
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered">
+      <div class="column is-full-width">
+        <h2 class="title is-3">Related Links</h2>
+        <div class="content has-text-justified">
+          <p></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+-->
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <!-- <pre><code>@misc{barsellotti2024talkingdinobridgingselfsupervised,
+  title={Talking to DINO: Bridging Self-Supervised Vision Backbones with Language for Open-Vocabulary Segmentation}, 
+  author={Luca Barsellotti and Lorenzo Bianchi and Nicola Messina and Fabio Carrara and Marcella Cornia and Lorenzo Baraldi and Fabrizio Falchi and Rita Cucchiara},
+  year={2024},
+  eprint={2411.19331},
+  archivePrefix={arXiv},
+  primaryClass={cs.CV},
+  url={https://arxiv.org/abs/2411.19331}, 
+}</code></pre> -->
+  </div>
+</section>
+
+
+<section class="section" id="ack">
+  <div class="container is-max-desktop content">
+    <h2 class="title">Acknowledgements</h2>
+    <!-- <p> -->
+      <!-- <a href="#" target="_blank"> -->
+        <!-- <img src="./static/images/muces.png" alt="MUCES Project Logo" width="200"> -->
+      <!-- </a> -->
+      <!-- This work has received financial support by the European Union &mdash; Next Generation EU, Mission 4 Component 1 -->
+      <!-- CUP B53D23026090001 (a MUltimedia platform for Content Enrichment and Search in audiovisual archives &mdash; MUCES PRIN 2022 PNRR P2022BW7CW). -->
+    <!-- </p> -->
+    <!-- <p> -->
+      <!-- <a href="https://www.sun-xr-project.eu/" target="_blank"><img src="./static/images/sun.png" alt="SUN Project Logo" width="200"></a> -->
+      <!-- This work has received financial support by the Horizon Europe Research & Innovation Programme under Grant agreement N. 101092612 (Social and hUman ceNtered XR - SUN project). -->
+    <!-- </p> -->
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="content has-text-centered">
+      <a class="icon-link" href="" class="external-link" disabled>
+        <i class="fab fa-github"></i>
+      </a>
+    </div>
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            This website is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+            Commons Attribution-ShareAlike 4.0 International License</a>.
+          </p>
+          <p>
+            This website is borrowed from <a
+              href="https://github.com/nerfies/nerfies.github.io">nerfies</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,4 +1,0 @@
-[submodule "transformers"]
-	path = transformers
-	url = https://github.com/francescortu/transformers
-	branch = NarrowGate
