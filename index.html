@@ -39,22 +39,6 @@
     <div class="navbar-menu">
       <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
 
-        <!-- <a class="navbar-item" href="https://concept-fusion.github.io">
-        <span class="icon">
-            <i class="fas fa-home"></i>
-        </span>
-        </a> -->
-
-        <!-- <div class="navbar-item has-dropdown is-hoverable">
-          <a class="navbar-link">
-            Related Research
-          </a>
-          <div class="navbar-dropdown">
-            <a class="navbar-item" href="Example.com">
-              FExample
-            </a>
-          </div>
-        </div> -->
       </div>
 
     </div>
@@ -103,28 +87,28 @@
             </h1>
             <div class="is-size-5 publication-authors">
               <span class="author-block">
-                <a href="">Alessandro Serra</a><sup>1,2*</sup>,
+                <a href="https://alexserra98.github.io/">Alessandro Serra</a><sup>1,2*</sup>,
               </span>
               <span class="author-block">
-                <a href="">Francesco Ortu</a><sup>1,3*</sup>,
+                <a href="https://francescortu.github.io/">Francesco Ortu</a><sup>1,3*</sup>,
               </span>
               <span class="author-block">
-                <a href="">Emanuele Panizon</a><sup>1*</sup>,
+                <a href="https://www.linkedin.com/in/emanuele-panizon-141618153/">Emanuele Panizon</a><sup>1*</sup>,
               </span>
               <span class="author-block">
-                <a href="">Lucrezia Valeriani</a><sup>1,3</sup>,
+                <a href="https://www.linkedin.com/in/lucrezia-valeriani-827909194/">Lucrezia Valeriani</a><sup>1,3</sup>,
               </span>
               <span class="author-block">
-                <a href="">Lorenzo Basile</a><sup>1,3</sup>,
+                <a href="https://www.linkedin.com/in/lorebasile/">Lorenzo Basile</a><sup>1,3</sup>,
               </span>
               <span class="author-block">
-                <a href="">Alessio Ansuini</a><sup>1</sup>,
+                <a href="https://areasciencepark-rit.gitlab.io/lade/alessio.ansuini/">Alessio Ansuini</a><sup>1</sup>,
               </span>
               <span class="author-block">
-                <a href="">Diego Doimo</a><sup>1^</sup>,
+                <a href="https://www.linkedin.com/in/diego-doimo/">Diego Doimo</a><sup>1^</sup>,
               </span>
               <span class="author-block">
-                <a href="">Alberto Cazzaniga</a><sup>1^</sup>
+                <a href="https://area-rit.gitlab.io/lade/alberto.cazzaniga/">Alberto Cazzaniga</a><sup>1^</sup>
               </span>
             </div>
 
@@ -162,31 +146,10 @@
                     <span>arXiv</span>
                   </a>
                 </span>
-                <!--
-              <span class="link-block">
-                <a href="https://cvpr.thecvf.com/media/PosterPDFs/CVPR%202024/29694.png?t=1717055323.7435858"
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fas fa-image"></i>
-                  </span>
-                  <span>Poster</span>
-                </a>
-              </span>
-              -->
-                <!-- Video Link.
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v="
-                   class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-              -->
+              
                 <!-- Code Link. -->
                 <span class="link-block">
-                  <a href="https://github.com/alexserra98/Narrow-gate"
+                  <a href="https://github.com/RitAreaSciencePark/Narrow-gate"
                     class="external-link button is-normal is-rounded is-dark">
                     <span class="icon">
                       <i class="fab fa-github"></i>
@@ -205,18 +168,6 @@
                     <span>Data</span>
                   </a>
                 </span>
-                <!-- Video Link. 
-              
-              <span class="link-block">
-                <a href="https://www.youtube.com/watch?v=3AIbqptBhmo"
-                class="external-link button is-normal is-rounded is-dark">
-                  <span class="icon">
-                      <i class="fab fa-youtube"></i>
-                  </span>
-                  <span>Video</span>
-                </a>
-              </span>
-            -->
               </div>
             </div>
           </header>
@@ -241,7 +192,7 @@
   <section class="section pt-0">
     <div class="container is-max-desktop">
       <figure>
-        <img src="./static/images/cartoon.png" class="teaser-image">
+        <img src="./static/images/cartoon.jpg" class="teaser-image">
       </figure>
 
   </section>
@@ -263,9 +214,9 @@
               Recent advances in multimodal training have significantly improved the integration of image understanding
               and generation within a unified model. This study investigates how vision-language models (VLMs) handle
               image understanding tasks, specifically focusing on how visual information is processed and transferred to
-              the textual domain. We focus on two architectures: <b>Chameleon</b>, which supports multimodal outputs,
+              the textual domain. We focus on two architectures: <b>Chameleon</b> [1], which supports multimodal outputs,
               and
-              <b>Pixtral</b>, which outputs text only. Pixtral fuses late-layer visual tokens into the textual domain,
+              <b>Pixtral</b> [2], which outputs text only. Pixtral fuses late-layer visual tokens into the textual domain,
               as
               it can output only text, and it features a distributed image-text communication pattern, in which internal
               image tokens directly communicate with the textual domain. On the contrary, Chameleon encodes visual and
@@ -296,23 +247,27 @@
             <img src="./static/images/figure3.svg" class="teaser-image" style="width:90%" height: auto><br><br>
             <caption><b>Left:</b> Cosine similarity between text and image token embeddings as a function of model depth
               reflects the orthogonality of modalities in Chameleon models.
-              <b>Right:</b> Homogeneity score of token clusters generated via Advanced Density Peaks with respect to
+              <b>Right:</b> Homogeneity score of token clusters generated via Advanced Density Peaks [3] with respect to
               their original modality.
             </caption>
           </figure>
           <div class="content has-text-justified">
-          
-          <br>
-          <p>
-          We highlight a fundamental difference in how multimodal-output and unimodal-output
-          VLMs handle the interaction between visual and textual representations. In
-          multimodal-output models like Chameleon, image and text representations remain largely separated throughout
-          the network, as indicated by consistently low cosine similarity and
-          modality-specific clustering. This separation raises questions about how and where the modalities communicate.
-          In contrast, models like Pixtral exhibit progressively higher fusion of image and text
-          representations in later layers, as witnessed by rising cosine similarity and decreasing modality homogeneity. This
-          indicates a more distributed communication pattern, where visual tokens directly inform textual generation.
-          </p>
+
+            <br>
+            <p>
+              We highlight a fundamental difference in how multimodal-output and unimodal-output
+              VLMs handle the interaction between visual and textual representations. In
+              multimodal-output models like Chameleon, image and text representations remain largely separated
+              throughout
+              the network, as indicated by consistently low cosine similarity and
+              modality-specific clustering. This separation raises questions about how and where the modalities
+              communicate.
+              In contrast, models like Pixtral exhibit progressively higher fusion of image and text
+              representations in later layers, as witnessed by rising cosine similarity and decreasing modality
+              homogeneity. This
+              indicates a more distributed communication pattern, where visual tokens directly inform textual
+              generation.
+            </p>
           </div>
 
         </div>
@@ -329,52 +284,54 @@
           <h2 class="title is-4">Cross-Modal Attention Contributions of Tokens</h2>
           <br>
           <div class="content has-text-justified">
-          <p>
-          We construct a metric that quantifies the average attention that all the text tokens give to a 
-          token at position \(j\) within the image part of the prompt, which we assume to span 
-          the first \( N_{[\texttt{EOI}]} \) tokens. 
-          We define the (relative) <b>cross-modal attention</b> \(f^{l}_j\) as:
-          \[ f^{l}_{j} =  \frac{1}{C}\frac{1}{|\mathcal{H}|}\sum_{h \in \mathcal{H}} \sum_{\;\;\;i>N_{[\texttt{EOI}]}} A_{(i,j)}^{l,h} \]
-          </p>
+            <p>
+              We construct a metric that quantifies the average attention that all the text tokens give to a
+              token at position \(j\) within the image part of the prompt, which we assume to span
+              the first \( N_{[\texttt{EOI}]} \) tokens.
+              We define the (relative) <b>cross-modal attention</b> \(f^{l}_j\) as:
+              \[ f^{l}_{j} = \frac{1}{C}\frac{1}{|\mathcal{H}|}\sum_{h \in \mathcal{H}}
+              \sum_{\;\;\;i>N_{[\texttt{EOI}]}} A_{(i,j)}^{l,h} \]
+            </p>
 
-          <figure>
-            <img src="./static/images/f6_attention_v3.svg" class="teaser-image"><br><br>
-            <caption>Contribution of different image token positions to the total text-on-image attention across layers
-              in Chameleon-7B (<b>left</b>) and Pixtral-12B (<b>right</b>), computed on ImageNet data.
-          </figure>
-          <br>
+            <figure>
+              <img src="./static/images/f6_attention_v3.svg" class="teaser-image"><br><br>
+              <caption>Contribution of different image token positions to the total text-on-image attention across
+                layers
+                in Chameleon-7B (<b>left</b>) and Pixtral-12B (<b>right</b>), computed on ImageNet data.
+            </figure>
+            <br>
 
-          <p>
-            The analysis of total attention contributions reveals that a few localized tokens, 
-            such as the <tt>[EOI]</tt> and last image tokens in Chameleon-7B, or the <tt>[EOL]</tt>, 
-            32nd and 1025th image tokens in Pixtral-12B, are strongly attended by text tokens, 
-            significantly shaping image-to-text communication.
-          </p>
+            <p>
+              The analysis of total attention contributions reveals that a few localized tokens,
+              such as the <tt>[EOI]</tt> and last image tokens in Chameleon-7B, or the <tt>[EOL]</tt>,
+              32nd and 1025th image tokens in Pixtral-12B, are strongly attended by text tokens,
+              significantly shaping image-to-text communication.
+            </p>
 
-          <h2 class="title is-4">Localization of Visual Semantic Information</h2>
+            <h2 class="title is-4">Localization of Visual Semantic Information</h2>
 
-          To investigate whether these tokens contain semantic visual information, we 
-          compute their neighborhood overlap with ImageNet class labels defined by [] as:
-          \[ \chi^{l,gt}= \frac{1}{n} \sum_i \frac{1}{k}\sum_{j\in \mathcal{N}^{l}(i)} A^{gt}_{{ij}}\]
-          
-          
-          <figure>
-            <img src="./static/images/f4_NO.svg" class="teaser-image"><br><br>
-            <caption>Neighborhood overlap between selected image tokens and ImageNet labels for Chameleon-7B
-              (<b>left</b>) and Pixtral-12B (<b>right</b>).
-          </figure>
-          <br>
-          The results above show that in the Chameleon models the <tt>[EOI]</tt> token is responsible for a 
-          large portion of cross-modal attention and contains the highest semantic information 
-          regarding the image. This makes it a suitable candidate for being a <b>narrow gate</b>
-          of communication. Conversely, in Pixtral the semantic content is spread on the whole 
-          image representation, thus suggesting that the model uses a much wider gate of 
-          communication distributed across large portions of the image. 
+            To investigate whether these tokens contain semantic visual information, we
+            compute their neighborhood overlap with ImageNet class labels defined by [4] as:
+            \[ \chi^{l,gt}= \frac{1}{n} \sum_i \frac{1}{k}\sum_{j\in \mathcal{N}^{l}(i)} A^{gt}_{{ij}}\]
 
 
+            <figure>
+              <img src="./static/images/f4_NO.svg" class="teaser-image"><br><br>
+              <caption>Neighborhood overlap between selected image tokens and ImageNet labels for Chameleon-7B
+                (<b>left</b>) and Pixtral-12B (<b>right</b>).
+            </figure>
+            <br>
+            The results above show that in the Chameleon models the <tt>[EOI]</tt> token is responsible for a
+            large portion of cross-modal attention and contains the highest semantic information
+            regarding the image. This makes it a suitable candidate for being a <b>narrow gate</b>
+            of communication. Conversely, in Pixtral the semantic content is spread on the whole
+            image representation, thus suggesting that the model uses a much wider gate of
+            communication distributed across large portions of the image.
+
+
+          </div>
         </div>
       </div>
-    </div>
   </section>
 
   <section class="section" id="results">
@@ -384,30 +341,34 @@
 
           <h2 class="title is-3">Ablation Experiments</h2>
           <h2 class="title is-4">Effect of Progressive Attention Knockout</h2>
-
+          <br>
+          <div class="content has-text-justified">
           <p>
-          We now investigate the impact of special tokens on the flow of information through the network by progressively performing knockout,
-          ablating communication from layer \(l\) to the end of the network. 
-          For each window of ablated layers, we compute \(\chi^{out,gt}\) to evaluate the effect of the ablation on the final representation.  
+            We now investigate the impact of special tokens on the flow of information through the network by
+            progressively performing attention knockout [5], ablating communication from layer \(l\) to the end of the network. For
+            each window of ablated layers, we compute \(\chi^{out,gt}\) to evaluate the effect of the ablation on the
+            final representation.
           </p>
 
           <figure>
             <img src="./static/images/figure7_v2.svg" class="teaser-image"><br><br>
             <caption>Neighborhood overlap between model final layer rappresentations at the last text token positions
               and ImageNet classes when applying attention knockout.
-              Communication from the <tt>[EOI]</tt>  token position (<b>green</b>) to the text or from all image token positions
+              Communication from the <tt>[EOI]</tt> token position (<b>green</b>) to the text or from all image token
+              positions
               (<b>magenta</b>) to the text is ablated across an increasing number of layers, starting from the last.
           </figure>
           <br>
 
-          These results show that visual information is not directly transmitted between the residual representations of image tokens 
-          and those of text tokens; instead, it flows through <tt>[EOI]</tt> .
+          These results show that visual information is not directly transmitted between the residual representations of
+          image tokens and those of text tokens; instead, it flows through <tt>[EOI]</tt> .
           <br>
 
 
           <h2 class="title is-4">Effect of Attention Knockout on Image Understanding Tasks</h2>
-          We evaluate how applying <b>attention knockout</b> to block communication between specific token positions and the text affects the general performance of the models on more complex visual understanding tasks.
-          
+          We evaluate how applying <b>attention knockout</b> to block communication between specific token positions and
+          the text affects the general performance of the models on more complex visual understanding tasks.
+
           <figure>
             <img src="./static/images/table.png" class="teaser-image" style="width:70%" height: auto><br><br>
             <caption>Performance of Chameleon (7B and 34B) and Pixtral models on visual question answering (VQAv2),
@@ -417,10 +378,10 @@
           <br>
 
           Overall, the results of our ablation experiments confirm that the cross-modal communication in the Chameleon
-          models flows mainly through a single token, the special
-          <tt>[EOI]</tt> token. On the contrary, in Pixtral-12B such communication happens in a distributed fashion through the image
-          itself, meaning that it cannot be disrupted with a local intervention.
-          
+          models flows mainly through a single token, the special <tt>[EOI]</tt> token. On the contrary, in Pixtral-12B
+          such communication happens in a distributed fashion through the image itself, meaning that it cannot be
+          disrupted with a local intervention.
+
         </div>
       </div>
     </div>
@@ -432,21 +393,28 @@
         <div class="column is-full-width has-text-centered">
 
           <h2 class="title is-3">Steering Image Understanding Through Activation Patching</h2>
-          The localized nature of cross-modal communication in Chameleon-7B and Chameleon-34B allows a targeted editing of image semantics.
-          We show this by performing a patching experiment on the <tt>[EOI]</tt> token, replacing that of a base ImageNet class with another target class and measure the similarity between the probability distribution of the base class and the target class.
+          <br>
+          <div class="content has-text-justified">
+          The localized nature of cross-modal communication in Chameleon-7B and Chameleon-34B allows a targeted editing
+          of image semantics. We show this by performing a patching experiment on the <tt>[EOI]</tt> token, replacing
+          that of a base ImageNet class with another target class and measure the similarity between the probability
+          distribution of the base class and the target class.
 
 
           <figure>
             <img src="./static/images/figure8.svg" class="teaser-image"><br><br>
             <caption>Similarity between the probability distributions over the vocabulary for the target input and the
-              base input across different layers.
-              <b>Left</b>: Impact of patching the residual stream at each layer. <b>Right</b>: Impact of cumulative
-              patching of the sole input of attention blocks, starting from the point indicated on the x-axis through
-              the end of the model.
+              base input across different layers. <b>Left</b>: Impact of patching the residual stream at each layer.
+              <b>Right</b>: Impact of cumulative patching of the sole input of attention blocks, starting from the point
+              indicated on the x-axis through the end of the model.
           </figure>
           <br>
 
-          <p>The [EOI] token plays a central role in how Chameleon models connect image and text information. Editing [EOI] in the middle layers effectively transfers semantics between classes, with the strongest impact occurring when global image information is encoded. These effects persist until later layers, where the semantics have already been communicated to the text, highlighting the token’s critical role in cross-modal understanding.</p>
+          <p>The <tt>[EOI]</tt> token plays a central role in how Chameleon models connect image and text information. Editing
+            <tt>[EOI]</tt> in the middle layers effectively transfers semantics between classes, with the strongest impact
+            occurring when global image information is encoded. These effects persist until later layers, where the
+            semantics have already been communicated to the text, highlighting the token’s critical role in cross-modal
+            understanding.</p>
 
         </div>
       </div>
@@ -486,9 +454,20 @@
   <section class="section" id="ack">
     <div class="container is-max-desktop content">
       <h2 class="title">References</h2>
-      [1]
-      [2]
-      [3]
+      [1] Chameleon Team. Chameleon: Mixed-modal early-fusion
+      foundation models. arXiv preprint arXiv:2405.09818, 2024.
+      <br>
+      [3] Mistral AI. Pixtral 12B. arXiv preprint arXiv:2410.07073, 2024.
+      <br>
+      [3] Maria d’Errico, Elena Facco, Alessandro Laio, and Alex
+      Rodriguez. Automatic topography of high-dimensional data
+      sets by non-parametric density peak clustering. Information Sciences, 2021.
+      <br>
+      [4] Diego Doimo, Aldo Glielmo, Alessio Ansuini, and Alessandro Laio. Hierarchical nucleation in deep neural networks.
+      NeurIPS, 2020.
+      <br>
+      [5] Mor Geva, Jasmijn Bastings, Katja Filippova, and Amir
+      Globerson. Dissecting recall of factual associations in auto-regressive language models. EMNLP, 2023.
     </div>
   </section>
 
