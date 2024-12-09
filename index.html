@@ -22,6 +22,7 @@
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
 </head>
 
 <body>
@@ -292,16 +293,17 @@
 
           <h2 class="title is-3">Modality Gap in VLMs</h2>
           <figure>
-            <img src="./static/images/figure3.svg" class="teaser-image"><br><br>
+            <img src="./static/images/figure3.svg" class="teaser-image" style="width:90%" height: auto><br><br>
             <caption><b>Left:</b> Cosine similarity between text and image token embeddings as a function of model depth
               reflects the orthogonality of modalities in Chameleon models.
               <b>Right:</b> Homogeneity score of token clusters generated via Advanced Density Peaks with respect to
               their original modality.
             </caption>
           </figure>
-          <br>
           <div class="content has-text-justified">
-            <p>
+          
+          <br>
+          <p>
           We highlight a fundamental difference in how multimodal-output and unimodal-output
           VLMs handle the interaction between visual and textual representations. In
           multimodal-output models like Chameleon, image and text representations remain largely separated throughout
@@ -310,7 +312,6 @@
           In contrast, models like Pixtral exhibit progressively higher fusion of image and text
           representations in later layers, as witnessed by rising cosine similarity and decreasing modality homogeneity. This
           indicates a more distributed communication pattern, where visual tokens directly inform textual generation.
-          <br>
           </p>
           </div>
 
@@ -326,6 +327,15 @@
 
           <h2 class="title is-3">Analysis of Cross-Modal Attention</h2>
           <h2 class="title is-4">Cross-Modal Attention Contributions of Tokens</h2>
+          <br>
+          <div class="content has-text-justified">
+          <p>
+          We construct a metric that quantifies the average attention that all the text tokens give to a 
+          token at position \(j\) within the image part of the prompt, which we assume to span 
+          the first \( N_{[\texttt{EOI}]} \) tokens. 
+          We define the (relative) <b>cross-modal attention</b> \(f^{l}_j\) as:
+          \[ f^{l}_{j} =  \frac{1}{C}\frac{1}{|\mathcal{H}|}\sum_{h \in \mathcal{H}} \sum_{\;\;\;i>N_{[\texttt{EOI}]}} A_{(i,j)}^{l,h} \]
+          </p>
 
           <figure>
             <img src="./static/images/f6_attention_v3.svg" class="teaser-image"><br><br>
@@ -334,13 +344,32 @@
           </figure>
           <br>
 
+          <p>
+            The analysis of total attention contributions reveals that a few localized tokens, 
+            such as the <tt>[EOI]</tt> and last image tokens in Chameleon-7B, or the <tt>[EOL]</tt>, 
+            32nd and 1025th image tokens in Pixtral-12B, are strongly attended by text tokens, 
+            significantly shaping image-to-text communication.
+          </p>
+
           <h2 class="title is-4">Localization of Visual Semantic Information</h2>
+
+          To investigate whether these tokens contain semantic visual information, we 
+          compute their neighborhood overlap with ImageNet class labels defined by [] as:
+          \[ \chi^{l,gt}= \frac{1}{n} \sum_i \frac{1}{k}\sum_{j\in \mathcal{N}^{l}(i)} A^{gt}_{{ij}}\]
+          
+          
           <figure>
             <img src="./static/images/f4_NO.svg" class="teaser-image"><br><br>
             <caption>Neighborhood overlap between selected image tokens and ImageNet labels for Chameleon-7B
               (<b>left</b>) and Pixtral-12B (<b>right</b>).
           </figure>
           <br>
+          The results above show that in the Chameleon models the <tt>[EOI]</tt> token is responsible for a 
+          large portion of cross-modal attention and contains the highest semantic information 
+          regarding the image. This makes it a suitable candidate for being a <b>narrow gate</b>
+          of communication. Conversely, in Pixtral the semantic content is spread on the whole 
+          image representation, thus suggesting that the model uses a much wider gate of 
+          communication distributed across large portions of the image. 
 
 
         </div>
@@ -355,26 +384,43 @@
 
           <h2 class="title is-3">Ablation Experiments</h2>
           <h2 class="title is-4">Effect of Progressive Attention Knockout</h2>
+
+          <p>
+          We now investigate the impact of special tokens on the flow of information through the network by progressively performing knockout,
+          ablating communication from layer \(l\) to the end of the network. 
+          For each window of ablated layers, we compute \(\chi^{out,gt}\) to evaluate the effect of the ablation on the final representation.  
+          </p>
+
           <figure>
             <img src="./static/images/figure7_v2.svg" class="teaser-image"><br><br>
             <caption>Neighborhood overlap between model final layer rappresentations at the last text token positions
               and ImageNet classes when applying attention knockout.
-              Communication from the [EOI]token position (<b>green</b>) to the text or from all image token positions
+              Communication from the <tt>[EOI]</tt>  token position (<b>green</b>) to the text or from all image token positions
               (<b>magenta</b>) to the text is ablated across an increasing number of layers, starting from the last.
           </figure>
           <br>
 
-          <h2 class="title is-4">Effect of Attention Knockout on Image Understanding Tasks</h2>
-          <figure>
-            <!-- <img src="./static/images/.pdf" class="teaser-image"><br><br> -->
-            <caption>Performance of Chameleon (7B and 34B) and Pixtral models on visual question answering (VQAv2),
-              image captioning (Flickr-30k and MS-COCO), and image classification (ImageNet) under different attention
-              ablation settings.
-              The [EOI] ablation condition removes communication from the End of Image ([EOI]) token to text tokens.
-          </figure>
+          These results show that visual information is not directly transmitted between the residual representations of image tokens 
+          and those of text tokens; instead, it flows through <tt>[EOI]</tt> .
           <br>
 
 
+          <h2 class="title is-4">Effect of Attention Knockout on Image Understanding Tasks</h2>
+          We evaluate how applying <b>attention knockout</b> to block communication between specific token positions and the text affects the general performance of the models on more complex visual understanding tasks.
+          
+          <figure>
+            <img src="./static/images/table.png" class="teaser-image" style="width:70%" height: auto><br><br>
+            <caption>Performance of Chameleon (7B and 34B) and Pixtral models on visual question answering (VQAv2),
+              image captioning (Flickr-30k and MS-COCO), and image classification (ImageNet) under different attention
+              ablation settings.
+          </figure>
+          <br>
+
+          Overall, the results of our ablation experiments confirm that the cross-modal communication in the Chameleon
+          models flows mainly through a single token, the special
+          <tt>[EOI]</tt> token. On the contrary, in Pixtral-12B such communication happens in a distributed fashion through the image
+          itself, meaning that it cannot be disrupted with a local intervention.
+          
         </div>
       </div>
     </div>
@@ -386,15 +432,21 @@
         <div class="column is-full-width has-text-centered">
 
           <h2 class="title is-3">Steering Image Understanding Through Activation Patching</h2>
+          The localized nature of cross-modal communication in Chameleon-7B and Chameleon-34B allows a targeted editing of image semantics.
+          We show this by performing a patching experiment on the <tt>[EOI]</tt> token, replacing that of a base ImageNet class with another target class and measure the similarity between the probability distribution of the base class and the target class.
+
+
           <figure>
             <img src="./static/images/figure8.svg" class="teaser-image"><br><br>
             <caption>Similarity between the probability distributions over the vocabulary for the target input and the
               base input across different layers.
-              (<b>left</b>) Impact of patching the residual stream at each layer. (<b>right</b>) Impact of cumulative
+              <b>Left</b>: Impact of patching the residual stream at each layer. <b>Right</b>: Impact of cumulative
               patching of the sole input of attention blocks, starting from the point indicated on the x-axis through
               the end of the model.
           </figure>
           <br>
+
+          <p>The [EOI] token plays a central role in how Chameleon models connect image and text information. Editing [EOI] in the middle layers effectively transfers semantics between classes, with the strongest impact occurring when global image information is encoded. These effects persist until later layers, where the semantics have already been communicated to the text, highlighting the token’s critical role in cross-modal understanding.</p>
 
         </div>
       </div>
@@ -406,27 +458,13 @@
   <div class="container is-max-desktop">
     <div class="columns is-centered">
       <div class="column is-full-width">
-        <h2 class="title is-3">Research questions</h2>
+        <h2 class="title is-3">Results</h2>
         <div class="content has-text-justified">
           </div>
       </div>
     </div>
   </div>
 </section> -->
-  <!-- Concurrent Work.
-<section class="section">
-  <div class="container is-max-desktop">
-    <div class="columns is-centered">
-      <div class="column is-full-width">
-        <h2 class="title is-3">Related Links</h2>
-        <div class="content has-text-justified">
-          <p></p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
--->
 
 
   <section class="section" id="BibTeX">
@@ -447,18 +485,10 @@
 
   <section class="section" id="ack">
     <div class="container is-max-desktop content">
-      <h2 class="title">Acknowledgements</h2>
-      <!-- <p> -->
-      <!-- <a href="#" target="_blank"> -->
-      <!-- <img src="./static/images/muces.png" alt="MUCES Project Logo" width="200"> -->
-      <!-- </a> -->
-      <!-- This work has received financial support by the European Union &mdash; Next Generation EU, Mission 4 Component 1 -->
-      <!-- CUP B53D23026090001 (a MUltimedia platform for Content Enrichment and Search in audiovisual archives &mdash; MUCES PRIN 2022 PNRR P2022BW7CW). -->
-      <!-- </p> -->
-      <!-- <p> -->
-      <!-- <a href="https://www.sun-xr-project.eu/" target="_blank"><img src="./static/images/sun.png" alt="SUN Project Logo" width="200"></a> -->
-      <!-- This work has received financial support by the Horizon Europe Research & Innovation Programme under Grant agreement N. 101092612 (Social and hUman ceNtered XR - SUN project). -->
-      <!-- </p> -->
+      <h2 class="title">References</h2>
+      [1]
+      [2]
+      [3]
     </div>
   </section>
 
