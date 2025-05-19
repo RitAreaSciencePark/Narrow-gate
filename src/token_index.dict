@@ -1,0 +1,62 @@
+token_dict = {
+            "last": [-1],
+            "last-2": [-2],
+            "last-4": [-4],
+            "32": [32],
+            "31": [31],
+            "1025": [1025],
+            "first-image": [token_indexes["image"][0]]
+            if "first-image" in token_indexes and len(token_indexes["image"]) > 0
+            else [],
+            "last-20-image": token_indexes["image"][-20:],
+            "last-image": token_indexes["last_line_image"],
+            "end-image": token_indexes["image_end"],
+            "end-of-frame": token_indexes["image_end_of_frame"],
+            "end-image-emu": token_indexes["image_end"]+token_indexes["image_end_of_frame"],# + token_indexes["last_line_image"],
+            "all-text": token_indexes["text"],
+            "all": [i for i in range(0, len(string_tokens))],
+            "all-image": token_indexes["image_start"]+token_indexes["image"],
+            "special": token_indexes["special"],
+            "random-text": [random.choice(token_indexes["text"])],
+            "end-lines": token_indexes["image"][32::33] + token_indexes["image_end"],
+            "random-image": [random.choice(token_indexes["image"])]
+            if "random-image" in tokens
+            else [],
+            "random-image-10": random.sample(token_indexes["image"], 10)
+            if "random-image-10" in tokens
+            else [],
+            "special-pixtral": [
+                1052,
+                1051,
+                1038,
+                991,
+                1037,
+                1047,
+                1032,
+                925,
+                988,
+                1050,
+                1046,
+                1034,
+                1048,
+                1040,
+                1027,
+                1023,
+                1022,
+                1049,
+                1033,
+                1041,
+                1026,
+                1055,
+                1053,
+                1054,
+                1024,
+                33,
+                1056,
+                66,
+                1025,
+            ],  #! hard coded and hard finded by Ema
+            "special-ema": token_indexes["image"][32::33]
+            + token_indexes["image_end"]
+            + [1025],
+        }
