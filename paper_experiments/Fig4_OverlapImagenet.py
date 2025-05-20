@@ -223,7 +223,7 @@ if __name__ == '__main__':
     #     new_config = ExtractActivationConfig(
     #         model_name=args.model,
     #         input="imagenet-text",
-    #         dataset_hf_name="RitAreaSciencePark/imagenet_short_text_100_classes_x_100_samples",
+    #         dataset_hf_name="******imagenet_short_text_100_classes_x_100_samples",
     #         torch_dtype=torch.bfloat16,
     #         token=["all-image"],
     #         id_num=0,

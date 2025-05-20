@@ -1,5 +1,5 @@
 # The Narrow Gate: Localized Image-Text Communication in Vision-Language Models
-![Screenshot from 2024-12-02 20-52-38](https://github.com/user-attachments/assets/0b2ba585-9d34-449c-8ba9-b15bc330f219)
+![The Narrow Gate: Localized Image-Text Communication visualization](src/assets/readme_pic.png)
 
 This repo contains the code for replicating the experiment of the paper ***The Narrow Gate: Localized Image-Text Communication in Vision-Language Models***. 
 
@@ -14,6 +14,17 @@ poetry install
 ```
 
 ## Reproducing the figures
-The scripts for reproducing the figures are in the `paper_experiments` directory. Please refer to the source of each script for the specific arguments.
+The scripts for reproducing the figures are in the `paper_experiments` directory. The following will reproduce the results for the model facebook/chameleon-7b
+```bash
+cd paper_experiments
+python Fig2_CosSim_Hom.py -m facebook/chameleon-7b -o .data/fig2
+python Fig3_CrossAttention.py -m facebook/chameleon-7b -o .data/fig3
+python Fig4_OverlapImagenet.py -m facebook/chameleon-7b -o .data/fig4
+python Tab1_AblationCaptioning.py -m facebook/chameleon-7b -n 2000 -d coco -o .data/captioning
+python Tab1_AblationCaptioning.py -m facebook/chameleon-7b -n 2000 -d flickr -o .data/captioning
+python Tab1_AblationVQA.py -m facebook/chameleon-7b -n 2000 -o .data/captioning_vqa -md zero-shot
+python Fig5_ActivationPatching.py -m facebook/chameleon-7b -o .data/patching
+```
+Please refer to the source of each script for the specific arguments.
 
 
