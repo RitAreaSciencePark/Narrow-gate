@@ -8,9 +8,6 @@ This repo contains the code for replicating the experiment of the paper ***The N
 ## Setup
 First, install the required packages:
 ```bash
-git submodule update --init --recursive
-poetry install
-cd transformers
 poetry install
 ```
 
