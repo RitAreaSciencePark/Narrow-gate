@@ -41,7 +41,7 @@ load_dotenv("../.env")
 
 
 dataset = load_dataset(
-    "lmms-lab/VQAv2",#"HuggingFaceM4/VQAv2",
+    "HuggingFaceM4/VQAv2",
     split="validation",
 )
 pandas_dataset = dataset.to_pandas()
@@ -108,12 +108,10 @@ model_configs = {
     },
 }
 
-PROMT_PIXTRAL = (
-    "- Answer the question using a single word, number, or short phrase. Use as few words as possible.\
+PROMT_PIXTRAL = """- Answer the question using a single word, number, or short phrase. Use as few words as possible.\
 - If the answer is a number, report it as a number, i.e. 2, not Two, and only include the number without any unit.\
 - If the question is Yes/No, answer with Yes/No, and nothing else (no likely, unknown, etc.).\
-- You cannot answer that the question is unanswerable. You must answer."
-)
+- You cannot answer that the question is unanswerable. You must answer."""
 EMU3_PROMPT = "Answer the question using a single word or phrase."
 SYSTEM_PROMPT_VILA = "A chat between a curious user and an artificial intelligence assistant. The assistant gives helpful, detailed, and polite answers to the user's questions. "
 if __name__ == "__main__":
@@ -286,7 +284,7 @@ if __name__ == "__main__":
                 if "chameleon" in args.model or "llava-onevision" in args.model:
                     if args.mode == "zero-shot":
                         completion = True
-                        prompt = f"{image_string}{question}\nAnswer the question using a single word or phrase."
+                        prompt = f"{image_string}{question}\nAnswer the question using a single word or phrase. Answer:"
                     elif args.mode == "prompt":
                         completion = False
                         prompt = f"{image_string}{question}\n{PROMT_PIXTRAL}"

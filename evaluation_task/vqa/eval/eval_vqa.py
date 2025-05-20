@@ -13,8 +13,7 @@ from pathlib import Path
 import json
 
 from datasets import load_dataset
-dataset = load_dataset("lmms-lab/VQAv2", split="validation")
-# dataset = load_dataset("HuggingFaceM4/VQAv2", split="validation")
+dataset = load_dataset("HuggingFaceM4/VQAv2", split="validation")
 
 
 def score_pixtral(model_answer: str, reference_answer: str | list[str]) -> float:

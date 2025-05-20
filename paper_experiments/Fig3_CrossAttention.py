@@ -172,13 +172,13 @@ if __name__ == "__main__":
         print("SMALL SIZE")
     print(f"Model: {args.model}\nOutdir: {args.out_dir}\nSave: {args.save}")
     print("Extracting text hidden vectors...")
+
     if "llava" in args.model:
         map_dataset_parallel_mode = "custom"
     elif "Janus" in args.model:
         map_dataset_parallel_mode = "sequential"
     else:
         map_dataset_parallel_mode = "parallel"
-
     # if args.small_size:
     #     dataset_dir = f"{DATA_DIR}/datasets/imagenet-text_50_classes_x_50_samples"
     # else:
@@ -193,7 +193,7 @@ if __name__ == "__main__":
         num_proc=2,
         map_dataset_parallel_mode = map_dataset_parallel_mode,
         device_map="balanced",
-        resize_image=[256,256], 
+        resize_image=[256,256],
     )
     
     model = Extractor(config)

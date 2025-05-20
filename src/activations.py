@@ -26,7 +26,6 @@ from transformers import (
 )
 from src.model.vilaU.builder import load_pretrained_model
 from src.model.vilaU.mm_utils import tokenizer_image_token
-from src.model.Emu2.modeling_emu import EmuForCausalLM
 
 import types
 from typing import (
@@ -482,141 +481,6 @@ class ModelFactory:
                 device_map=config.device_map,
             )
             return model, processor, model_config
-        ###############################
-        #         BAAI/Emu2           #
-        ###############################
-        elif config.model_name == "BAAI/Emu2":
-            model_name = "BAAI/Emu2-Chat"
-            tokenizer_name = "BAAI/Emu2-Chat"
-            tokenizer = AutoTokenizer.from_pretrained(
-                tokenizer_name,
-                torch_dtype=config.torch_dtype,
-                device_map=config.device_map,
-                trust_remote_code=True,
-            )
-
-            import src.model.Emu2.constants as constants
-            
-            import torchvision.transforms as T
-            class Emu2Processor:
-                def __init__(self, tokenizer):
-                    self.config = json.load(open("/u/dssc/zenocosini/MultimodalInterp/src/model/Emu2/config.json"))
-                    self.dtype = config.torch_dtype  # setting default dtype
-                    self.tokenizer = tokenizer
-                    self.n_query = self.config["vision_config"]["n_query"]
-                    self.v_query = self.config["vision_config"]["v_query"]
-                    self.image_placeholder = constants.DEFAULT_IMG_TOKEN + constants.DEFAULT_IMAGE_TOKEN * self.n_query + constants.DEFAULT_IMG_END_TOKEN
-                    # temporarily borrow [gIMG] as the video frame feature placeholder.
-                    self.video_placeholder = constants.DEFAULT_IMG_TOKEN + constants.DEFAULT_gIMG_TOKEN * self.v_query + constants.DEFAULT_IMG_END_TOKEN
-                
-                def _prepare_chat_template(self, text, system_msg=""):
-                    text = [
-                        system_msg + constants.USER_TOKEN + ": " + t + constants.ASSISTANT_TOKEN +":"
-                        for t in text
-                    ]
-                    return text
-                
-                def prepare_image_input(self, images):
-                    image_size: int = self.config["vision_config"]['image_size']
-                    transform = T.Compose(
-                        [
-                            T.Resize(
-                                (image_size, image_size), interpolation=T.InterpolationMode.BICUBIC
-                            ),
-                            T.ToTensor(),
-                            T.Normalize(constants.OPENAI_DATASET_MEAN, constants.OPENAI_DATASET_STD),
-                        ]
-                    )
-                    images = [transform(image) for image in images]
-                    return torch.stack(images, 0).to(dtype=self.dtype)
-                def prepare_text_input(
-                    self, 
-                    text: List[str],
-                    image_placeholder: str = constants.DEFAULT_IMG_PLACEHOLDER,
-                    video_placeholder: str = constants.DEFAULT_VID_PLACEHOLDER,
-                    ):
-                    text = [
-                        t.replace(image_placeholder, self.image_placeholder).replace(video_placeholder, self.video_placeholder)
-                        for t in text
-                    ]
-                    input_ids = tokenizer(text, padding="longest", return_tensors="pt")
-                    return input_ids
-                
-                def __call__(
-                        self,
-                        text: List[str],
-                        images: Optional[List["PIL.Image"]] = None,
-                        video: Optional[List["PIL.Image"]] = None,
-                        system_msg: str = "",
-                        to_cuda: bool = True,
-                        **kwargs,
-                    ):
-
-                    # if self.config.model_version == "chat":
-                    # text = self._prepare_chat_template(text, system_msg)
-                    if text is not isinstance(text, list):
-                        text = [text]
-                    if images is not None:
-                        if images is not isinstance(images, list):
-                            images = [images]
-                        images = self.prepare_image_input(images)
-                    if video is not None:
-                        video = self.prepare_image_input(video)
-                    inputs = self.prepare_text_input(text)
-                    input_ids = inputs.input_ids
-                    attention_mask =  inputs.attention_mask
-
-                    if to_cuda:
-                        input_ids = input_ids.to("cuda")
-                        attention_mask = attention_mask.to("cuda")
-                        if images is not None:
-                            images = images.to("cuda")
-                        if video is not None:
-                            video = video.to("cuda")
-
-
-                    
-                    return {
-                        'input_ids': input_ids,
-                        'attention_mask': attention_mask,
-                        'images': images,
-                        'video': video
-                    }
-                
-                def decode(self, input_ids, **kwargs):
-                    return self.tokenizer.decode(input_ids, **kwargs)
-                
-                def batch_decode(self, input_ids, **kwargs):
-                    return self.tokenizer.batch_decode(input_ids, **kwargs)
-                
-            processor = Emu2Processor(tokenizer)       
-
-
-            model = EmuForCausalLM.from_pretrained(
-                model_name,
-                torch_dtype=config.torch_dtype,
-                device_map=config.device_map,
-                attn_implementation="eager",
-            )
-            model_config = ModelConfig(
-                residual_stream_input_hook_name="model.layers[{}].input",
-                residual_stream_hook_name="model.layers[{}].output",
-                intermediate_stream_hook_name="model.layers[{}].post_attention_layernorm.output",
-                attn_value_hook_name="model.layers[{}].self_attn.v_proj.output",
-                attn_out_hook_name="model.layers[{}].self_attn.o_proj.output",
-                attn_in_hook_name="model.layers[{}].self_attn.input",
-                attn_matrix_hook_name="model.layers[{}].self_attn.attention_matrix_hook.output",
-                attn_out_proj_weight="model.layers[{}].self_attn.o_proj.weight",
-                attn_out_proj_bias="model.layers[{}].self_attn.o_proj.bias",
-                embed_tokens="model.embed_tokens.input",
-                num_hidden_layers=model.config.num_hidden_layers,
-                num_attention_heads=model.config.num_attention_heads,
-                hidden_size=model.config.hidden_size,
-                num_key_value_heads=model.config.num_key_value_heads,
-                num_key_value_groups=model.config.num_attention_heads
-                // model.config.num_key_value_heads,
-                head_dim=model.config.hidden_size // model.config.num_attention_heads,
-            )
 
         #################################
         #         BAAI/Emu3             #
@@ -908,7 +772,7 @@ class ModelFactory:
         else:
             raise ValueError("Unsupported model_name")
 
-        return model, [], model_config
+        return model, processor, model_config
 
 
 @dataclass
@@ -2052,6 +1916,7 @@ class Extractor:
     def prepare_for_forward_pass(self, dataset=None) -> DataLoader:
         if dataset is None:
             dataset = self.dataset
+
         return _prepare_for_forward_pass(
             dataset,
             self.config,

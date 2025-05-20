@@ -2,9 +2,9 @@
 name = "multimodalinterp"
 version = "0.1.0"
 description = ""
-authors = ["Francesc0rtu <francescortu@live.it>"]
+authors = ["Anon"]
 readme = "README.md"
-package-mode = false
+package-mode = true
 
 [tool.poetry.dependencies]
 python = "^3.10"
@@ -42,7 +42,8 @@ opencv-python = "^4.10.0.84"
 loguru = "^0.7.3"
 rich = "^13.9.4"
 memory-profiler = "^0.61.0"
-transformers = {git = "https://github.com/francescortu/transformers", rev = "NarrowGate_3.0"}
+transformers = {path = "transformers", develop = false}  # add
+einops = "^0.8.1"
 
 
 
