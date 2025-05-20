@@ -1,5 +1,6 @@
 # The Narrow Gate: Localized Image-Text Communication in Vision-Language Models
-![The Narrow Gate: Localized Image-Text Communication visualization](src/assets/readme_pic.png)
+
+![The Narrow Gate: Localized Image-Text Communication visualization](src/pics/readme_pic.png)
 
 This repo contains the code for replicating the experiment of the paper ***The Narrow Gate: Localized Image-Text Communication in Vision-Language Models***. 
 
